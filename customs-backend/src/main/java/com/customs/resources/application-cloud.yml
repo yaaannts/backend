@@ -1,0 +1,25 @@
+spring:
+  data:
+    mongodb:
+      # Reads from Secret Manager or Environment Variable
+      uri: ${MONGO_URI}
+      auto-index-creation: true
+
+  # GCP specific
+  cloud:
+    gcp:
+      project-id: ${GCP_PROJECT_ID}
+
+# Cloud Run uses structured JSON logging
+logging:
+  pattern:
+    console: '{"severity":"%level","message":"%msg","logger":"%logger","thread":"%thread"}%n'
+
+# Production settings
+server:
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 10
+    max-connections: 8192
+    accept-count: 100

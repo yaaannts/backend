@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: customs-service
+    env: docker
+    plan: free # Important: specifies the free tier
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://...
+    # Ensure your Dockerfile exposes port 8080
